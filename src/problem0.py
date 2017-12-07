@@ -305,7 +305,7 @@ def problem0c(circle, n, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ####################################################################
@@ -313,8 +313,15 @@ def problem0c(circle, n, window):
     #   renders with a half-second pause after rendering.
     ####################################################################
     # ------------------------------------------------------------------
+    circle.attach_to(window)
 
-
+    newpoint = circle.center
+    print(newpoint.x)
+    for k in range(n):
+        newpoint2 = rg.Point((newpoint.x) + (circle.radius * (2 * k)), newpoint.y)
+        newcircle = rg.Circle(newpoint2, circle.radius)
+        newcircle.attach_to(window)
+        window.render(0.5)
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
