@@ -358,7 +358,7 @@ def problem1c(n):
 
     count = 1
     count2 = 0
-    for k in range(2, n):
+    for k in range(2, n + 1):
         if is_prime(k) is True:
             count = count * k
     num = str(count)
