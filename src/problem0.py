@@ -16,9 +16,9 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_problem0a()
+    #run_test_problem0a()
     run_test_problem0b()
-    run_test_problem0c()
+    #run_test_problem0c()
 
 
 def is_prime(n):
@@ -240,12 +240,10 @@ def problem0b(n):
     num = 1
     count = 0
     for k in range(2, n):
-        print(k)
         if (k % 2) == 0:
             count = count + 1
         else:
             num = num + 1
-            print('prime', num)
     return num
 
 def run_test_problem0c():

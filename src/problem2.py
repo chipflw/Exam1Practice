@@ -102,7 +102,7 @@ def problem2a(circle, rectangle, window):
       :type window:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -114,7 +114,25 @@ def problem2a(circle, rectangle, window):
     circle.attach_to(window)
     rectangle.attach_to(window)
     window.render()
-    window.close_on_mouse_click()
+    window.continue_on_mouse_click()
+
+    point1 = rectangle.corner_1
+    point2 = rectangle.corner_2
+    line = rg.Line(point1, point2)
+    line.arrow = "last"
+    line.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+
+    circle.outline_color = rectangle.outline_color
+    circle.attach_to(window)
+    window.render()
+
+
+
+
+
+
 
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
@@ -187,6 +205,13 @@ def problem2b(rect, n, delta, win):
     #    TIME ESTIMATE:   15 to 25 minutes.
     # ------------------------------------------------------------------
 
+    for k in range(n):
+        print(rect.corner_1, rect.corner_2)
+        newpoint1 = rg.Point(rect.corner_1.x - (delta * k), rect.corner_1.y - (delta * k))
+        newpoint2 = rg.Point(rect.corner_2.x ++ (delta * k), rect.corner_2.y + (delta * k))
+        newrec = rg.Rectangle(newpoint1, newpoint2)
+        newrec.attach_to(win)
+    win.render()
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
