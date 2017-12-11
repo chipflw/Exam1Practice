@@ -2,8 +2,8 @@
 PRACTICE Test 1, problem 3.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Chip Daniel.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -37,7 +37,7 @@ def main():
 def run_test_problem3a():
     """ Tests the   problem3a   function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  problem1a  function defined below.
     #   Include at least **   5   ** tests (we wrote four for you).
     # ------------------------------------------------------------------
@@ -95,7 +95,7 @@ def run_test_problem3a():
     print('Test 4 expected:', expected)
     print('       actual:  ', answer)
 
-    window3.close_on_mouse_click()
+
 
     # ------------------------------------------------------------------
     # TO DO: 2 (continued).
@@ -103,6 +103,15 @@ def run_test_problem3a():
     # your choice), add 1 more test case of your own choosing.
     # ------------------------------------------------------------------
 
+    # Test 5 (it is on window 3):
+    point = rg.Point(100, 200)
+    expected = 25
+    answer = problem3a(window3, point, 5)
+    print()
+    print('Test 4 expected:', expected)
+    print('       actual:  ', answer)
+
+    window3.close_on_mouse_click()
 
 def problem3a(window, point, n):
     """
@@ -137,7 +146,7 @@ def problem3a(window, point, n):
         :type n:      int
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -145,12 +154,29 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # ------------------------------------------------------------------
-
+    sum1 = 0
+    for k in range(n):
+        newpointx = point.x + (20 * k)
+        newpointy = point.y + (10 * k)
+        newpoint = rg.Point(newpointx, newpointy)
+        newpointy2 = newpointy + 50
+        newpoint2 = rg.Point(newpointx, newpointy2)
+        line = rg.Line(newpoint, newpoint2)
+        if k < 6:
+            line.thickness = 1 + (2 * k)
+            temp = line.thickness
+        else:
+            line.thickness = 13
+            temp = line.thickness
+        sum1 = sum1 + temp
+        line.attach_to(window)
+    window.render()
+    return sum1
 
 def run_test_problem3b():
     """ Tests the   problem3b   function. """
     # Test 1 is ALREADY DONE (here).
-    expected = 158
+    expected = 400
     answer = problem3b(4, rg.Point(100, 50))
     print()
     print('Test 1 expected:', expected)
@@ -201,7 +227,7 @@ def problem3b(m, point1):
         :type point1: rg.Point
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ####################################################################
@@ -214,6 +240,32 @@ def problem3b(m, point1):
     #    DIFFICULTY:      8 or 9
     #    TIME ESTIMATE:   20 to 30 minutes.
     # ------------------------------------------------------------------
+    window = rg.RoseWindow(400, 650)
+    sum1 = 0
+    for a in range(m):
+        for k in range(3 + (2 * a)):
+            newpointx = point1.x + (20 * k)
+            newpointy = point1.y + (10 * k) + (60 * a)
+            newpoint = rg.Point(newpointx, newpointy)
+            newpointy2 = newpointy + 50
+            newpoint2 = rg.Point(newpointx, newpointy2)
+            line = rg.Line(newpoint, newpoint2)
+
+
+            if k < 6:
+                line.thickness = 1 + (2 * k)
+                temp = line.thickness
+            else:
+                line.thickness = 13
+                temp = line.thickness
+            sum1 = sum1 + temp
+
+            line.attach_to(window)
+
+
+    window.render()
+    window.close_on_mouse_click()
+    return sum1
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
