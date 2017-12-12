@@ -129,11 +129,6 @@ def problem2a(circle, rectangle, window):
     window.render()
 
 
-
-
-
-
-
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
     print()
@@ -205,10 +200,10 @@ def problem2b(rect, n, delta, win):
     #    TIME ESTIMATE:   15 to 25 minutes.
     # ------------------------------------------------------------------
 
+    rect.attach_to(win)
     for k in range(n):
-        print(rect.corner_1, rect.corner_2)
         newpoint1 = rg.Point(rect.corner_1.x - (delta * k), rect.corner_1.y - (delta * k))
-        newpoint2 = rg.Point(rect.corner_2.x ++ (delta * k), rect.corner_2.y + (delta * k))
+        newpoint2 = rg.Point(rect.corner_2.x + (delta * k), rect.corner_2.y + (delta * k))
         newrec = rg.Rectangle(newpoint1, newpoint2)
         newrec.attach_to(win)
     win.render()
